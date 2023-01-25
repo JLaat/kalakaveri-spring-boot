@@ -19,12 +19,13 @@ public class LureService {
         this.lureRepo = lureRepo;
     }
 
-    public List<Lure> getAllFishes() {
+    public List<Lure> getAllLures() {
         return lureRepo.findAll();
     }
 
-    public Optional<Lure> findLure(Long id) {
-        return lureRepo.findById(id);
+    public Lure findLure(Long id) {
+        return lureRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Lure with id " + id + " was not found."));
     }
 
     public Lure addLure(Lure lure) {

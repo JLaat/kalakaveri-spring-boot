@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -23,8 +22,8 @@ public class LakeService {
         return lakeRepo.findAll();
     }
 
-    public Optional<Lake> findLake(Long id) {
-        return lakeRepo.findLakeById(id);
+    public Lake findLake(Long id) {
+        return lakeRepo.findLakeById(id).orElseThrow(() -> new RuntimeException("Lake with id " + id + " was not found"));
     }
 
     public Lake addLake(Lake lake) {
