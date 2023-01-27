@@ -7,3 +7,4 @@ Application uses MariaDB as database that is currently located at ```jbdc:mariad
 - Get fish stats of each lake
 - Get fish stats of each lure
 - Top 10 catches for each fish species
+- Create unit tests and use TDD when confident with JUnit
