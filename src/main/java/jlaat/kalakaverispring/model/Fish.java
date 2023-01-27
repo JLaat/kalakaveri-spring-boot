@@ -1,11 +1,9 @@
 package jlaat.kalakaverispring.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "fish")
 public class Fish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,14 +11,12 @@ public class Fish {
 
     private String name;
 
-    private Double weight;
-
     public Fish() {
     }
 
     public Fish(String name, Double weight) {
         this.name = name;
-        this.weight = weight;
+
     }
 
     public Long getId() {
@@ -37,13 +33,5 @@ public class Fish {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
     }
 }

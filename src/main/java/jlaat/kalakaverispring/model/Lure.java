@@ -1,12 +1,10 @@
 package jlaat.kalakaverispring.model;
 
 import jakarta.annotation.Nullable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "lure")
 public class Lure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
