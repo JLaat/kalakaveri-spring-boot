@@ -9,22 +9,23 @@ public class Catch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Fish fish;
+    private Long fishId;
 
-    @ManyToOne
-    private Lake lake;
+    private Long lakeId;
 
-    @ManyToOne
-    private Lure lure;
+    private Long lureId;
 
-    public Catch(Fish fish, Lake lake, Lure lure) {
-        this.fish = fish;
-        this.lake = lake;
-        this.lure = lure;
+    private double weight;
+
+    public Catch(Long fishId, Long lakeId, Long lureId, double weight) {
+        this.fishId = fishId;
+        this.lakeId = lakeId;
+        this.lureId = lureId;
+        this.weight = weight;
     }
 
     public Catch() {
+
     }
 
     public Long getId() {
@@ -35,27 +36,35 @@ public class Catch {
         this.id = id;
     }
 
-    public Fish getFish() {
-        return fish;
+    public Long getFishId() {
+        return fishId;
     }
 
-    public void setFish(Fish fish) {
-        this.fish = fish;
+    public void setFishId(Long fishId) {
+        this.fishId = fishId;
     }
 
-    public Lake getLake() {
-        return lake;
+    public Long getLakeId() {
+        return lakeId;
     }
 
-    public void setLake(Lake lake) {
-        this.lake = lake;
+    public void setLakeId(Long lakeId) {
+        this.lakeId = lakeId;
     }
 
-    public Lure getLure() {
-        return lure;
+    public Long getLureId() {
+        return lureId;
     }
 
-    public void setLure(Lure lure) {
-        this.lure = lure;
+    public void setLureId(Long lureId) {
+        this.lureId = lureId;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 }

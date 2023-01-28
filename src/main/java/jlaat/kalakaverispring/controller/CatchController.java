@@ -30,7 +30,7 @@ public class CatchController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Catch> addCatch(Catch newCatch) {
+    public ResponseEntity<Catch> addCatch(@RequestBody Catch newCatch) {
         Catch addedCatch = catchService.addCatch(newCatch);
         return new ResponseEntity<>(addedCatch, HttpStatus.CREATED);
     }

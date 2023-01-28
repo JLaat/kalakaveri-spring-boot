@@ -29,7 +29,7 @@ public LureController(LureService lureService) {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Lure> addLure(Lure lure) {
+    public ResponseEntity<Lure> addLure(@RequestBody Lure lure) {
     Lure addedLure = lureService.addLure(lure);
     return new ResponseEntity<>(addedLure, HttpStatus.CREATED);
     }

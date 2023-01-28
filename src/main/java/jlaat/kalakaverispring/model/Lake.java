@@ -13,6 +13,15 @@ public class Lake {
 
     private String location;
 
+    public Lake(String name, String location) {
+        this.name = name;
+        this.location = location;
+    }
+
+    public Lake() {
+
+    }
+
     public Long getId() {
         return id;
     }

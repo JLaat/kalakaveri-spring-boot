@@ -33,7 +33,7 @@ public class LakeController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Lake> addLake(Lake lake) {
+    public ResponseEntity<Lake> addLake(@RequestBody Lake lake) {
         Lake addedLake = lakeService.addLake(lake);
         return new ResponseEntity<>(addedLake, HttpStatus.CREATED);
     }
