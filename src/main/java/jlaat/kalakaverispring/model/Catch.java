@@ -17,6 +17,9 @@ public class Catch {
 
     private double weight;
 
+    public Catch() {
+    }
+
     public Catch(String fishName, String lakeName, String lureName, double weight) {
         this.fishName = fishName;
         this.lakeName = lakeName;
