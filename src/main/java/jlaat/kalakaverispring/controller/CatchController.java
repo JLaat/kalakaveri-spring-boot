@@ -24,6 +24,12 @@ public class CatchController {
         return new ResponseEntity<>(catches, HttpStatus.OK);
     }
 
+    @GetMapping("/top")
+    public ResponseEntity<List<Catch>> getTopCatches() {
+        List<Catch> catches = catchService.getTopCatches();
+        return new ResponseEntity<>(catches, HttpStatus.OK);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Catch> findCatch(@PathVariable("id") Long id) {
         Catch catches = catchService.findCatch(id);

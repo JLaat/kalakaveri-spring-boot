@@ -9,21 +9,21 @@ public class Catch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String fishName;
+    private Long fishId;
 
-    private String lakeName;
+    private Long lakeId;
 
-    private String lureName;
+    private Long lureId;
 
     private double weight;
 
     public Catch() {
     }
 
-    public Catch(String fishName, String lakeName, String lureName, double weight) {
-        this.fishName = fishName;
-        this.lakeName = lakeName;
-        this.lureName = lureName;
+    public Catch(Long fishId, Long lakeId, Long lureId, double weight) {
+        this.fishId = fishId;
+        this.lakeId = lakeId;
+        this.lureId = lureId;
         this.weight = weight;
     }
 
@@ -35,28 +35,28 @@ public class Catch {
         this.id = id;
     }
 
-    public String getFishName() {
-        return fishName;
+    public Long getFishId() {
+        return fishId;
     }
 
-    public void setFishName(String fishName) {
-        this.fishName = fishName;
+    public void setFishId(Long fishId) {
+        this.fishId = fishId;
     }
 
-    public String getLakeName() {
-        return lakeName;
+    public Long getLakeId() {
+        return lakeId;
     }
 
-    public void setLakeName(String lakeName) {
-        this.lakeName = lakeName;
+    public void setLakeId(Long lakeId) {
+        this.lakeId = lakeId;
     }
 
-    public String getLureName() {
-        return lureName;
+    public Long getLureId() {
+        return lureId;
     }
 
-    public void setLureName(String lureName) {
-        this.lureName = lureName;
+    public void setLureId(Long lureId) {
+        this.lureId = lureId;
     }
 
     public double getWeight() {

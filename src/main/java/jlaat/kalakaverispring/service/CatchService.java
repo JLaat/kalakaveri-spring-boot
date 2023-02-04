@@ -36,4 +36,8 @@ public class CatchService {
     public void deleteFishById(Long id) {
         catchRepo.deleteFishById(id);
     }
+
+    public List<Catch> getTopCatches() {
+        return catchRepo.getTopCatches();
+    }
 }
