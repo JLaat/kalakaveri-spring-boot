@@ -28,6 +28,7 @@ public class FishController {
         return new ResponseEntity<Fish>(fishes, HttpStatus.OK);
     }
 
+
     @PostMapping("/add")
     public ResponseEntity<Fish> addFish(@RequestBody Fish fish) {
         Fish newFish = fishService.addFish(fish);

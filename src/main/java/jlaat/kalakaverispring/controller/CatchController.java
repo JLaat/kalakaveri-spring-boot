@@ -30,11 +30,18 @@ public class CatchController {
         return new ResponseEntity<>(catches, HttpStatus.OK);
     }
 
+    @GetMapping("/count/{id}")
+    public ResponseEntity<Long> getCountByFish(@PathVariable("id") Long id) {
+        Long count = catchService.getCatchesByFish(id);
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Catch> findCatch(@PathVariable("id") Long id) {
         Catch catches = catchService.findCatch(id);
         return new ResponseEntity<>(catches, HttpStatus.OK);
     }
+
 
     @PostMapping("/add")
     public ResponseEntity<Catch> addCatch(@RequestBody Catch newCatch) {

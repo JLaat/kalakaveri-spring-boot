@@ -21,6 +21,10 @@ public class CatchService {
         return catchRepo.findAll();
     }
 
+    public long getCatchesByFish(Long id) {
+        return catchRepo.countByFishId(id);
+    }
+
     public Catch findCatch(Long id) {
         return catchRepo.findCatchById(id).orElseThrow(() -> new RuntimeException("Catch by id "+id+" was not found."));
     }
