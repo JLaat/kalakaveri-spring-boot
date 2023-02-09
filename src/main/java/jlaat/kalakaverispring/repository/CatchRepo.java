@@ -21,5 +21,8 @@ public interface CatchRepo extends JpaRepository<Catch, Long> {
 
     Long countByFishId(Long id);
 
+    Long countByLureId(Long id);
 
+    @Query("SELECT SUM(c.weight) FROM Catch c WHERE c.lureId = :lureId")
+    Double sumWeightByLure(@Param("lureId") Long id);
 }

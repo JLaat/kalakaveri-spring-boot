@@ -18,6 +18,7 @@ public class CatchController {
         this.catchService = catchService;
     }
 
+    // For GETTING
     @GetMapping("/all")
     public ResponseEntity<List<Catch>> getAllCatches() {
         List<Catch> catches = catchService.getAllCatches();
@@ -36,25 +37,28 @@ public class CatchController {
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
 
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Catch> findCatch(@PathVariable("id") Long id) {
         Catch catches = catchService.findCatch(id);
         return new ResponseEntity<>(catches, HttpStatus.OK);
     }
 
-
+    // For ADDING
     @PostMapping("/add")
     public ResponseEntity<Catch> addCatch(@RequestBody Catch newCatch) {
         Catch addedCatch = catchService.addCatch(newCatch);
         return new ResponseEntity<>(addedCatch, HttpStatus.CREATED);
     }
 
+    // For UPDATING
     @PutMapping("/update")
     public ResponseEntity<Catch> updateCatch(Catch newCatch) {
         Catch updatedCatch = catchService.updateCatch(newCatch);
         return new ResponseEntity<>(updatedCatch, HttpStatus.OK);
     }
 
+    // For DELETING
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteCatch(@PathVariable("id") Long id) {
         catchService.deleteFishById(id);

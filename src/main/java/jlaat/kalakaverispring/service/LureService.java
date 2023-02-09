@@ -14,7 +14,6 @@ import java.util.Optional;
 public class LureService {
     private final LureRepo lureRepo;
 
-    @Autowired
     public LureService(LureRepo lureRepo) {
         this.lureRepo = lureRepo;
     }

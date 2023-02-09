@@ -13,7 +13,6 @@ import java.util.List;
 public class LakeService {
     private final LakeRepo lakeRepo;
 
-    @Autowired
     public LakeService(LakeRepo lakeRepo) {
         this.lakeRepo = lakeRepo;
     }

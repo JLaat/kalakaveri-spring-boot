@@ -14,9 +14,8 @@ public class Fish {
     public Fish() {
     }
 
-    public Fish(String name, Double weight) {
+    public Fish(String name) {
         this.name = name;
-
     }
 
     public Long getId() {

@@ -11,4 +11,5 @@ public interface FishRepo extends JpaRepository<Fish, Long> {
     Optional<Fish> findFishById(Long id);
 
     void deleteFishById(Long id);
+
 }

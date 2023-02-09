@@ -14,14 +14,13 @@ import java.util.List;
 public class CatchService {
     private final CatchRepo catchRepo;
 
-    @Autowired
     public CatchService(CatchRepo catchRepo) {this.catchRepo = catchRepo;}
 
     public List<Catch> getAllCatches() {
         return catchRepo.findAll();
     }
 
-    public long getCatchesByFish(Long id) {
+    public Long getCatchesByFish(Long id) {
         return catchRepo.countByFishId(id);
     }
 

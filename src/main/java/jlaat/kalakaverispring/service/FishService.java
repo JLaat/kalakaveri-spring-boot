@@ -13,7 +13,6 @@ import java.util.List;
 public class FishService {
     private final FishRepo fishRepo;
 
-    @Autowired
     public FishService(FishRepo fishRepo) {
         this.fishRepo = fishRepo;
     }
