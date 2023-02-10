@@ -16,11 +16,11 @@ public class Lure {
 
     private String color;
 
-    private String weight;
+    private int weight;
 
     public Lure() {}
 
-    public Lure(String brand, String model, String color, String weight) {
+    public Lure(String brand, String model, String color, int weight) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -59,11 +59,11 @@ public class Lure {
         this.color = color;
     }
 
-    public String getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 }
