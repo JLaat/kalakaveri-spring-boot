@@ -23,8 +23,7 @@ public class LureService {
     }
 
     public Lure findLure(Long id) {
-        return lureRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Lure with id " + id + " was not found."));
+        return lureRepo.getReferenceById(id);
     }
 
     public Lure addLure(Lure lure) {
