@@ -1,5 +1,6 @@
 package jlaat.kalakaverispring.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jlaat.kalakaverispring.model.Fish;
 import jlaat.kalakaverispring.model.Lure;
@@ -11,12 +12,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -59,7 +60,17 @@ class LureControllerTest {
     }
 
     @Test
-    protected void testUpdateLure() {
+    protected void testUpdateLure() throws Exception {
+        Lure lure = new Lure(1L, "Rapala", "X-Rap", "Red", 16);
+
+        when(lureService.updateLure(any(Lure.class))).thenReturn(lure);
+
+        MvcResult mvcResult = this.mockMvc.perform(put("/lure/update")
+                .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(lure)))
+                .andReturn();
+
+        assertEquals(200, mvcResult.getResponse().getStatus());
+        assertEquals(objectMapper.writeValueAsString(lure), mvcResult.getResponse().getContentAsString());
     }
 
     @Test
