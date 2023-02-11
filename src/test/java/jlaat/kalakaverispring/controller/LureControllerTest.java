@@ -66,7 +66,7 @@ class LureControllerTest {
         when(lureService.updateLure(any(Lure.class))).thenReturn(lure);
 
         MvcResult mvcResult = this.mockMvc.perform(put("/lure/update")
-                .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(lure)))
+                        .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(lure)))
                 .andReturn();
 
         assertEquals(200, mvcResult.getResponse().getStatus());
@@ -74,6 +74,8 @@ class LureControllerTest {
     }
 
     @Test
-    protected void testDeleteLure() {
+    protected void testDeleteLure() throws Exception {
+        this.mockMvc.perform(delete("/lure/delete/2"))
+                .andExpect(status().isOk());
     }
 }
