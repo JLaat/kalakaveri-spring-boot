@@ -27,6 +27,14 @@ public class Lure {
         this.weight = weight;
     }
 
+    public Lure(Long id, String brand, String model, String color, int weight) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+        this.weight = weight;
+    }
+
     public Long getId() {
         return id;
     }

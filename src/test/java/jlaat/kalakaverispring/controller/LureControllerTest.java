@@ -1,5 +1,6 @@
 package jlaat.kalakaverispring.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jlaat.kalakaverispring.model.Fish;
 import jlaat.kalakaverispring.model.Lure;
 import jlaat.kalakaverispring.service.LureService;
@@ -19,20 +20,26 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+
 @WebMvcTest(LureController.class)
 class LureControllerTest {
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @MockBean
     private LureService lureService;
     @Autowired
-    MockMvc mockMvc;
+    protected MockMvc mockMvc;
 
     @Test
-    void testGetAllLures() throws Exception {
+    protected void testGetAllLures() throws Exception {
         this.mockMvc.perform(get("/lure/all")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
+
     @Test
-    void testFindLure() throws Exception {
+    protected void testFindLure() throws Exception {
         Long id = 2L;
         when(lureService.findLure(2L)).thenReturn(new Lure("Rapala", "X-Rap", "Red", 13));
 
@@ -42,14 +49,20 @@ class LureControllerTest {
     }
 
     @Test
-    void testAddLure() throws Exception {
+    protected void testAddLure() throws Exception {
+        Lure lure = new Lure(1L, "Rapala", "X-Rap", "Red", 16);
+
+        mockMvc.perform(post("/lure/add")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(lure)))
+                .andExpect(status().isCreated());
     }
 
     @Test
-    void testUpdateLure() {
+    protected void testUpdateLure() {
     }
 
     @Test
-    void testDeleteLure() {
+    protected void testDeleteLure() {
     }
 }
