@@ -22,4 +22,4 @@ This repository contains the source code for backend of my fishing application. 
 
 
 ## State
-Right now I'm focused on learning testing tools and concepts. Integration testing controllers at the moment.
+Right now I'm focused on learning testing tools and concepts. Testing controllers at the moment.
