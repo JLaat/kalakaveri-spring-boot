@@ -26,6 +26,13 @@ public class Catch {
         this.lureId = lureId;
         this.weight = weight;
     }
+    public Catch(Long catchId, Long fishId, Long lakeId, Long lureId, double weight) {
+        this.id = catchId;
+        this.fishId = fishId;
+        this.lakeId = lakeId;
+        this.lureId = lureId;
+        this.weight = weight;
+    }
 
     public Long getId() {
         return id;

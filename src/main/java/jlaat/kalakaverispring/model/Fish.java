@@ -18,6 +18,11 @@ public class Fish {
         this.name = name;
     }
 
+    public Fish(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
