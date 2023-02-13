@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -15,8 +16,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(CatchController.class)
 class CatchControllerTest {
@@ -45,9 +45,11 @@ class CatchControllerTest {
 
     @Test
     void getCountByFish() throws Exception {
-        this.mockMvc.perform(get("/catch/count/2"))
+        when(catchService.getCatchesByFish(2L)).thenReturn(13L);
+
+        this.mockMvc.perform(get("/catch/count/{id}", 2L))
                 .andExpect(status().isOk())
-                .andDo(print());
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
