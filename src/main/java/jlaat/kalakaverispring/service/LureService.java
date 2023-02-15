@@ -23,7 +23,7 @@ public class LureService {
     }
 
     public Lure findLure(Long id) {
-        return lureRepo.getReferenceById(id);
+        return lureRepo.findLureById(id).orElseThrow(() -> new IllegalStateException("Lure by id " + id + " was not found"));
     }
 
     public Lure addLure(Lure lure) {
