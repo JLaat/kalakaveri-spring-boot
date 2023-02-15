@@ -41,22 +41,34 @@ class LureControllerTest {
 
     @Test
     protected void testFindLure() throws Exception {
-        Long id = 2L;
-        when(lureService.findLure(2L)).thenReturn(new Lure("Rapala", "X-Rap", "Red", 13));
+        Lure lure = new Lure(1L, "Rapala", "X-Rap", "Red", 16);
+        when(lureService.findLure(any(Long.class))).thenReturn(lure);
 
-        this.mockMvc.perform(get("/lure/find/{id}", id)).andDo(print())
+        this.mockMvc.perform(get("/lure/find/{id}", 1L))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").value(1L))
+                .andExpect(jsonPath("$.brand").value("Rapala"))
+                .andExpect(jsonPath("$.model").value("X-Rap"))
+                .andExpect(jsonPath("$.color").value("Red"))
+                .andExpect(jsonPath("$.weight").value(16));
     }
 
     @Test
     protected void testAddLure() throws Exception {
         Lure lure = new Lure(1L, "Rapala", "X-Rap", "Red", 16);
 
+        when(lureService.addLure(any(Lure.class))).thenReturn(lure);
+
         mockMvc.perform(post("/lure/add")
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(lure)))
-                .andExpect(status().isCreated());
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id").value(1L))
+                .andExpect(jsonPath("$.brand").value("Rapala"))
+                .andExpect(jsonPath("$.model").value("X-Rap"))
+                .andExpect(jsonPath("$.color").value("Red"))
+                .andExpect(jsonPath("$.weight").value(16));
     }
 
     @Test
